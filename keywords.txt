@@ -1,0 +1,6 @@
+MessageDecoder	KEYWORD1
+releaseMemory	KEYWORD2
+encode	KEYWORD2
+decode	KEYWORD2
+getFieldsCount	KEYWORD2
+getField	KEYWORD2

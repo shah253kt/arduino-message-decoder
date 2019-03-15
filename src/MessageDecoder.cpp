@@ -30,22 +30,22 @@ void MessageDecoder::releaseMemory()
 	numOfParam = 0;
 }
 
-char * MessageDecoder::encode(char **arr)
+char * MessageDecoder::encode(char **arr, byte numOfParameters)
 {
-	byte numOfParameters = sizeof(arr);
-	byte totalLength = 2 + numOfParameters;
-	byte currentIndex = 2;
+	encoderTotalLength = 2 + numOfParameters;
+	currentIndex = 2;
 
 	for (byte i = 0; i < numOfParameters; i++)
 	{
-		totalLength += strlen(arr[i]) + 1;
+		encoderTotalLength += strlen(arr[i]) + 1;
 	}
 
-	message = new char[totalLength + 1];
+	delete message;
+	message = new char[encoderTotalLength + 1];
 	message[0] = '{';
 	message[1] = char(numOfParameters);
-	message[totalLength - 1] = '}';
-	message[totalLength] = '\0';
+	message[encoderTotalLength - 1] = '}';
+	message[encoderTotalLength] = '\0';
 
 	for (byte i = 0; i < numOfParameters; i++)
 	{

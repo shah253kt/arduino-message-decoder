@@ -4,7 +4,7 @@ class MessageDecoder {
   public:
     MessageDecoder();
     ~MessageDecoder();
-    char * encode(char ** arr);
+    char * encode(char ** arr, byte numOfParameters);
     bool decode(char c);
     byte getFieldsCount();
     char *getField(byte index);
@@ -14,6 +14,7 @@ class MessageDecoder {
     char **fieldPtr, *message;
     byte numOfParam, currentParamIndex, fieldLength, currentFieldIndex;
     bool started, ended, isNumOfParam, isFieldLength;
+    byte encoderTotalLength, currentIndex;
 
     void releaseMemory();
 };
